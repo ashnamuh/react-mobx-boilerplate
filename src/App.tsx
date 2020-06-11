@@ -14,7 +14,7 @@ import ManduPage from 'pages/mandu'
 export default function App() {
   return (
     <>
-    <GlobalStyled />
+      <GlobalStyled />
       <Router>
         <div>
           <ul>
@@ -35,7 +35,7 @@ export default function App() {
             <Route exact path="/mandu" component={ManduPage} />
           </Switch>
         </div>
-        </Router>
+      </Router>
     </>
   )
 }
