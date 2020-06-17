@@ -1,13 +1,17 @@
 import { observable, action } from 'mobx'
-import ArticleModel from 'models/article'
+import articleModel, { ArticleModel } from 'models/article'
 import { Article } from 'types/article'
 
-class ArticleStore {
+export class ArticleStore {
+  articleModel: ArticleModel;
+  constructor(articleModel: ArticleModel) {
+    this.articleModel = articleModel
+  }
   @observable articles: Article[] = []
   @action
   async fetch() {
     try {
-      const articles = await ArticleModel.fetch()
+      const articles = await this.articleModel.fetch()
       this.articles = articles
     } catch (err) {
       console.error(err)
@@ -15,4 +19,4 @@ class ArticleStore {
   }
 }
 
-export default new ArticleStore()
+export default new ArticleStore(articleModel)
