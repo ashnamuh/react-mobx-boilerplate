@@ -3,20 +3,19 @@ import articleModel, { ArticleModel } from 'models/article'
 import { Article } from 'types/article'
 
 export class ArticleStore {
-  articleModel: ArticleModel;
-  constructor(articleModel: ArticleModel) {
-    this.articleModel = articleModel
+  constructor() {
   }
   @observable articles: Article[] = []
   @action
   async fetch() {
     try {
-      const articles = await this.articleModel.fetch()
-      this.articles = articles
+      // const articles = await this.articleModel.fetch()
+      // this.articles = articles
+      this.articles = []
     } catch (err) {
       console.error(err)
     }
   }
 }
 
-export default new ArticleStore(articleModel)
+export default new ArticleStore()
